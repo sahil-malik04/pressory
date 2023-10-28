@@ -26,6 +26,7 @@ pnpm-debug.log*
 node_modules/
 
 
+
 # Compiled Java class files
 *.class
 
@@ -79,6 +80,7 @@ Thumbs.db
 /vendor
 .env
 .env.backup
+.env.example
 .phpunit.result.cache
 docker-compose.override.yml
 Homestead.json
