@@ -1,0 +1,542 @@
+API Documentation:
+
+ROOT_URI: http://127.0.0.1:8000
+
+
+1. Home(Recent Activity)
+Request Type: GET
+Url: ROOT_URI+/api/ 
+Response: list of articles with user
+data type: json
+sample response: [
+{
+    "HomeData": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "user_id": 37,
+                "title": "who will cry, when i will cry",
+                "url": "https://whowillcrywheniwilldie.com/",
+                "published": "2020-03-08 11:34:00",
+                "publication_id": 1,
+                "status": 0,
+                "created_at": "2020-03-08T11:35:13.000000Z",
+                "updated_at": "2020-08-04T17:41:58.000000Z",
+                "user": {
+                    "id": 37,
+                    "name": "asdfasd",
+                    "email": "asdfas@mail.com",
+                    "username": "admin2",
+                    "user_type_id": 1,
+                    "is_verified": 1,
+                    "verification_token": "",
+                    "country_id": 14,
+                    "profile_image": null,
+                    "signup_ip": null,
+                    "status": 1,
+                    "created_at": "2020-03-08T10:54:06.000000Z",
+                    "updated_at": "2020-09-01T07:00:06.000000Z",
+                    "forgot_token": null,
+                    "shadow_ban": 0
+                },
+                "publication": {
+                    "id": 1,
+                    "publication": "testing",
+                    "domain": "testing",
+                    "country": "testing",
+                    "user_id": 1,
+                    "created_at": "2022-01-14T10:19:41.000000Z",
+                    "updated_at": "2022-01-14T10:19:41.000000Z"
+                },
+                "articles_authors": [
+                    {
+                        "id": 1,
+                        "author_name": "robin sheng",
+                        "nationality": "japan",
+                        "created": "2020-04-13 19:39:47",
+                        "modified": "2020-07-28 01:19:41",
+                        "pivot": {
+                            "article_id": 1,
+                            "author_id": 1
+                        }
+                    }
+                ],
+                "activity": [
+                    {
+                        "id": 1,
+                        "article_id": 1,
+                        "activity": "Article Added",
+                        "created_at": "2020-03-08T11:35:13.000000Z",
+                        "updated_at": "2020-03-08T11:35:13.000000Z"
+                    }
+                ]
+            },
+        ],
+        "next_page_url": "http://127.0.0.1:8000/api?page=2",
+        "path": "http://127.0.0.1:8000/api",
+        "per_page": 30,
+        "prev_page_url": null,
+        "to": 30,
+        "total": 101422
+    },
+    "status": 200
+}
+]
+
+
+2)
+Search Top
+Request Type: POST
+Url: ROOT_URI+/api/search 
+Response: list of articles with publication
+data type: json									[! in Post man > Body > form-data]
+sample request: {
+					search_by:publication
+					keyword:The
+				}
+sample response: [
+	   {
+    "result": [
+        {
+            "id": 7,
+            "publication": "The Guardian",
+            "domain": "https://www.theguardian.com/",
+            "country": "United Kingdom",
+            "user_id": null,
+            "created_at": "2020-04-15T15:07:01.000000Z",
+            "updated_at": "2020-07-26T17:27:49.000000Z",
+            "publication_article": [
+                {
+                    "id": 6,
+                    "user_id": 37,
+                    "title": "Go relief for corona",
+                    "url": "https://www.theguardian.com/commentisfree/2020/apr/01/populist-right-coronavirus",
+                    "published": "2019-07-17 15:13:00",
+                    "publication_id": 7,
+                    "status": 0,
+                    "created_at": "2020-04-15T16:18:55.000000Z",
+                    "updated_at": "2020-08-04T17:41:58.000000Z"
+                },
+              
+            ]
+        }
+    ],
+    "status": 200
+}
+	
+]
+
+3. Author
+Request Type: get
+Url: ROOT_URI+/api/authors 
+Response: list of Author with articles
+data type: json									
+sample response: 
+[
+   {
+    "author": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "author_name": "robin sheng",
+                "nationality": "japan",
+                "created": "2020-04-13 19:39:47",
+                "modified": "2020-07-28 01:19:41",
+                "fallacies_author_count": 0,
+                "articles_count": 2,
+                "articles": [
+                    {
+                        "id": 1,
+                        "user_id": 37,
+                        "title": "who will cry, when i will cry",
+                        "url": "https://whowillcrywheniwilldie.com/",
+                        "published": "2020-03-08 11:34:00",
+                        "publication_id": 1,
+                        "status": 0,
+                        "created_at": "2020-03-08T11:35:13.000000Z",
+                        "updated_at": "2020-08-04T17:41:58.000000Z",
+                        "pivot": {
+                            "author_id": 1,
+                            "article_id": 1
+                        },
+                        "publication": {
+                            "id": 1,
+                            "publication": "testing",
+                            "domain": "testing",
+                            "country": "testing",
+                            "user_id": 1,
+                            "created_at": "2022-01-14T10:19:41.000000Z",
+                            "updated_at": "2022-01-14T10:19:41.000000Z"
+                        }
+                    },
+                    {
+                        "id": 9,
+                        "user_id": 41,
+                        "title": "Next steps in aircraft carrier saga could include reinstatement of fired Capt. Crozier",
+                        "url": "https://abcnews.go.com/Politics/steps-carrier-saga-include-reinstatement-fired-captain/story?id=70185911&cid=clicksource_4380645_2_heads_hero_live_headlines_hed",
+                        "published": "2020-11-26 20:14:00",
+                        "publication_id": 8,
+                        "status": 0,
+                        "created_at": "2020-04-17T12:04:52.000000Z",
+                        "updated_at": "2020-08-04T17:41:58.000000Z",
+                        "pivot": {
+                            "author_id": 1,
+                            "article_id": 9
+                        },
+                        "publication": {
+                            "id": 8,
+                            "publication": "New York Times",
+                            "domain": "https://www.nytimes.com/",
+                            "country": "USA",
+                            "user_id": null,
+                            "created_at": "2020-04-17T10:46:46.000000Z",
+                            "updated_at": "2020-07-26T17:27:32.000000Z"
+                        }
+                    }
+                ]
+            },
+    
+                ]
+            }
+        
+ 
+    },
+    "status": 200
+]
+
+
+4)
+publication
+Request Type: get
+Url: ROOT_URI+/api/publication 
+Response: list of publication
+data type: json									
+sample response: [
+	{
+   {
+    "publication": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "publication": "testing",
+                "domain": "testing",
+                "country": "testing",
+                "user_id": 1,
+                "created_at": "2022-01-14T10:19:41.000000Z",
+                "updated_at": "2022-01-14T10:19:41.000000Z",
+                "fallacies_publication_count": 0,
+                "publication_article_count": 1
+            },
+           
+        ],
+      
+    },
+    "status": 200
+}
+    }
+]
+
+5)
+Article
+Request Type: get
+Url: ROOT_URI+/api/article 
+Response: list of Publication and article
+data type: json									
+sample response: [
+{
+    "articles": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "user_id": 37,
+                "title": "who will cry, when i will cry",
+                "url": "https://whowillcrywheniwilldie.com/",
+                "published": "2020-03-08 11:34:00",
+                "publication_id": 1,
+                "status": 0,
+                "created_at": "2020-03-08T11:35:13.000000Z",
+                "updated_at": "2020-08-04T17:41:58.000000Z",
+                "article_fallacie_data_count": 0,
+                "articles_authors": [
+                    {
+                        "id": 1,
+                        "author_name": "robin sheng",
+                        "nationality": "japan",
+                        "created": "2020-04-13 19:39:47",
+                        "modified": "2020-07-28 01:19:41",
+                        "pivot": {
+                            "article_id": 1,
+                            "author_id": 1
+                        }
+                    }
+                ],
+                "publication": {
+                    "id": 1,
+                    "publication": "testing",
+                    "domain": "testing",
+                    "country": "testing",
+                    "user_id": 1,
+                    "created_at": "2022-01-14T10:19:41.000000Z",
+                    "updated_at": "2022-01-14T10:19:41.000000Z"
+                }
+            },
+            
+        ],
+    },
+    "status": 200
+}  
+]
+
+
+6)
+
+Request Type: get
+Url: ROOT_URI+/api/fallacie 
+Response: list of fallacies 
+data type: json									
+sample response: [
+	{
+    "fallicies": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 24,
+                "fallacy": "Middle Ground",
+                "code": "MG",
+                "description": "You claimed that a compromise, or middle point, between two extremes must be the truth.",
+                "status": 1,
+                "created": "2020-04-16 13:55:44",
+                "modified": "2020-04-16 13:55:44"
+            },
+     
+        ],
+     
+    },
+    "status": 200
+}
+]
+
+7)
+Article view page
+Request Type: get
+Url: ROOT_URI+/api/article/view/25
+Response: Details Of  Article
+data type: json									
+sample response: [
+	{
+    "article": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 25,
+                "user_id": 42,
+                "title": "A Presidential Smear",
+                "url": "https://www.wsj.com/articles/a-presidential-smear-11590535397",
+                "published": "2020-05-26 19:23:00",
+                "publication_id": 11,
+                "status": 1,
+                "created_at": "2020-05-28T17:13:22.000000Z",
+                "updated_at": "2020-08-04T17:41:58.000000Z",
+                "articles_authors": [
+                    {
+                        "id": 21,
+                        "author_name": "The Editorial Board",
+                        "nationality": null,
+                        "created": "2020-05-28 17:13:22",
+                        "modified": "2020-05-28 17:13:22",
+                        "pivot": {
+                            "article_id": 25,
+                            "author_id": 21
+                        }
+                    }
+                ],
+                "publication": {
+                    "id": 11,
+                    "publication": "Wall Street Journal",
+                    "domain": "https://www.wsj.com/",
+                    "country": "USA",
+                    "user_id": null,
+                    "created_at": "2020-05-28T16:47:37.000000Z",
+                    "updated_at": "2020-07-26T17:26:30.000000Z"
+                },
+                "article_fallacie_data": [
+                    {
+                        "id": 19,
+                        "article_id": 25,
+                        "user_id": 42,
+                        "fallacy_statement": "Perhaps he even thinks this helps him politically, though we can’t imagine how.",
+                        "fallacy_id": 8,
+                        "confirmation": 1,
+                        "voting": null,
+                        "created_at": "2020-05-28T17:13:49.000000Z",
+                        "updated_at": "2020-05-28T17:13:49.000000Z"
+                    },
+                    {
+                        "id": 20,
+                        "article_id": 25,
+                        "user_id": 42,
+                        "fallacy_statement": "Mr. Trump is debasing his office, and he’s hurting the country in doing so.",
+                        "fallacy_id": 2,
+                        "confirmation": 1,
+                        "voting": null,
+                        "created_at": "2020-05-28T17:14:11.000000Z",
+                        "updated_at": "2020-05-28T17:14:11.000000Z"
+                    }
+                ]
+            }
+        ],
+    },
+    "status": 200
+}
+]
+
+8)
+Author view page
+Request Type: get
+Url: ROOT_URI+/api/author/view/25
+Response: Details Of  Author page
+data type: json									
+sample response: [
+{
+    "author": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 25,
+                "author_name": "Piers Morgan",
+                "nationality": null,
+                "created": "2020-06-02 21:45:20",
+                "modified": "2020-06-02 21:45:20",
+                "articles": [
+                    {
+                        "id": 29,
+                        "user_id": 42,
+                        "title": "He failed to protect America from Covid-19 now a cowardly President fuels the fires and fiddles in his bunker as America burns with rage at George Floyd’s despicable murder by police – shame on you, Mr Trump",
+                        "url": "https://www.dailymail.co.uk/news/article-8376469/PIERS-MORGAN-Trump-fiddles-bunker-America-burns-rage-George-Floyds-death.html",
+                        "published": "2020-06-01 13:51:00",
+                        "publication_id": 14,
+                        "status": 1,
+                        "created_at": "2020-06-02T21:45:20.000000Z",
+                        "updated_at": "2020-08-04T17:41:59.000000Z",
+                        "pivot": {
+                            "author_id": 25,
+                            "article_id": 29
+                        },
+                        "publication": {
+                            "id": 14,
+                            "publication": "Daily Mail",
+                            "domain": "https://www.dailymail.co.uk/",
+                            "country": "United Kingdom",
+                            "user_id": null,
+                            "created_at": "2020-06-02T21:45:20.000000Z",
+                            "updated_at": "2020-07-26T17:25:35.000000Z"
+                        }
+                    }
+                ]
+            }
+        ],
+    },
+    "status": 200
+}
+]
+
+
+9)
+Publication view page
+Request Type: get
+Url: ROOT_URI+/api/publication/view/25
+Response: Details Of publication page
+data type: json									
+sample response: [
+{
+    "publication": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 25,
+                "publication": "China Daily",
+                "domain": "http://global.chinadaily.com.cn/",
+                "country": "China",
+                "user_id": null,
+                "created_at": "2020-06-09T13:23:15.000000Z",
+                "updated_at": "2020-07-26T17:21:41.000000Z",
+                "publication_article": [
+                    {
+                        "id": 49,
+                        "user_id": 42,
+                        "title": "With fire in their soul",
+                        "url": "http://global.chinadaily.com.cn/a/202006/09/WS5edf0135a310834817251cd7.html",
+                        "published": "2020-06-09 14:28:30",
+                        "publication_id": 25,
+                        "status": 1,
+                        "created_at": "2020-06-09T13:23:15.000000Z",
+                        "updated_at": "2020-08-04T17:41:59.000000Z",
+                        "articles_authors": [
+                            {
+                                "id": 30,
+                                "author_name": "Testt",
+                                "nationality": null,
+                                "created": "2020-06-09 12:26:35",
+                                "modified": "2020-06-09 12:26:35",
+                                "pivot": {
+                                    "article_id": 49,
+                                    "author_id": 30
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": 50,
+                        "user_id": 42,
+                        "title": "Yellow River can lead way to greener recovery",
+                        "url": "http://global.chinadaily.com.cn/a/202006/09/WS5eded036a310834817251a6e.html",
+                        "published": "2020-06-09 14:29:08",
+                        "publication_id": 25,
+                        "status": 1,
+                        "created_at": "2020-06-09T13:23:52.000000Z",
+                        "updated_at": "2020-08-04T17:41:59.000000Z",
+                        "articles_authors": [
+                            {
+                                "id": 30,
+                                "author_name": "Testt",
+                                "nationality": null,
+                                "created": "2020-06-09 12:26:35",
+                                "modified": "2020-06-09 12:26:35",
+                                "pivot": {
+                                    "article_id": 50,
+                                    "author_id": 30
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+    },
+    "status": 200
+}
+]
+
+10)
+Add Fallacies in Article View Page
+Request Type: POST
+Url: ROOT_URI+/api/fallacies/add
+Response: list of articles with publication
+data type: json									[! in Post man > Body > form-data]
+sample request: {
+					article_id:12,
+					user_id:37,
+                    fallacy_statement:testing data,
+                    fallacy_id:2,
+                    confirmation:1
+				},
+sample response: [
+    {
+    "message": "Data Insert SuccessFully",
+    "status": 200
+   }
+]
